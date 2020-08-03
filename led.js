@@ -3,9 +3,10 @@ var Gpio = require('onoff').Gpio;
 //LED TEST CODE
 
 var LED = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
+var blinkInterval;
 
 module.exports.start = function start(){
-    var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
+    blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
     setTimeout(endBlink, 5000); //stop blinking after 5 seconds
 }
 

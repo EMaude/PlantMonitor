@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 
+const dataManager = require('./dataManager');
 const led = require('./led');
-const tempHumidity = require("./tempHumidity");
 
 var port = 4040;
 var address, os = require('os') ,ifaces = os.networkInterfaces();
@@ -37,7 +37,7 @@ app.get('/soilMoisture', (req,res)=>{
 
 let server = app.listen(port, ()=>{
     led.start();
-    tempHumidity.start();
+    dataManager.start();
     console.log(`Server running at http://${address}:${port}/`);
 })
 

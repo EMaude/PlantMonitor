@@ -20,5 +20,8 @@ function readAndLog()
         if (!err) {
             console.log(`temp: ${temperature}°C, humidity: ${humidity}%`);
         }
+        else {
+            console.log("Error Reading Temp/Humidity Sensor");
+        }
     });
 }

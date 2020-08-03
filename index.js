@@ -36,15 +36,12 @@ app.get('/soilMoisture', (req,res)=>{
 });
 
 let server = app.listen(port, ()=>{
+    //run init LED
     led.start();
+
+    //start the data manager reading and logging sensor data
     dataManager.start();
+
     console.log(`Server running at http://${address}:${port}/`);
 })
-
-
-
-/* TODO: Log data at set intervals and add routes to display logged data
-        Existing Routes should pull from logged data
-*/
-
 

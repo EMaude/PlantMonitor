@@ -1,19 +1,11 @@
 var sensor = require("node-dht-sensor");
 var readInterval;
 
+var pin = 17
+var sensorType = 11 // as per API docs
 
-module.exports.start = function(){
-    readInterval = setInterval(readAndLog, 1000);
-}
 
+//read sensor and return value to caller
 module.exports.read = function(){
-    var temp = 0;
-    var humid = 0;
-
-    sensor.read(11, 17, function(err, temperature, humidity){
-        temp = temperature;
-        humid = humidity;
-    });
-
-    return [temp, humid]
+     return sensor.read(sensorType, pin);
 }

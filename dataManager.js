@@ -2,7 +2,7 @@ var tempHumidity = require("./tempHumidity");
 var readInterval;
 
 module.exports.start = function(){
-    readInterval = setInterval(readAndLog, 1000);
+    readInterval = setInterval(getTempHumidity, 1000);
 }
 
 function getTempHumidity(){

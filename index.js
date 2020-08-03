@@ -37,7 +37,7 @@ app.get('/soilMoisture', (req,res)=>{
 
 let server = app.listen(port, ()=>{
     led.start();
-    tempHumidity.log();
+    tempHumidity.start();
     console.log(`Server running at http://${address}:${port}/`);
 })
 

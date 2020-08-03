@@ -7,10 +7,13 @@ module.exports.start = function(){
 }
 
 module.exports.read = function(){
-    return sensor.read(11, 17, function(err, temperature, humidity){
-        if(!err)
-        {
-            return [temperature, humidity]
-        }   
+    var temp = 0;
+    var humid = 0;
+
+    sensor.read(11, 17, function(err, temperature, humidity){
+        temp = temperature;
+        humid = humidity;
     });
+
+    return [temp, humid]
 }

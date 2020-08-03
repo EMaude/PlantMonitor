@@ -2,8 +2,7 @@ const express = require('express');
 const app = express();
 
 const led = require('./led');
-
-
+const tempHumidity = require("./tempHumidity");
 
 var port = 4040;
 var address, os = require('os') ,ifaces = os.networkInterfaces();
@@ -21,7 +20,7 @@ for (var dev in ifaces) {
 
 
 app.get('/', (req,res)=>{
-    res.send("API: /temp, /humidity, /soilMoisture");
+    res.send("API: /temp, /humidity, /soilMoisture");v
 });
 
 app.get('/temp', (req,res)=>{
@@ -38,6 +37,7 @@ app.get('/soilMoisture', (req,res)=>{
 
 let server = app.listen(port, ()=>{
     led.start();
+    tempHumidity.log();
     console.log(`Server running at http://${address}:${port}/`);
 })
 

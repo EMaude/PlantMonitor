@@ -1,6 +1,24 @@
 const express = require('express');
 const app = express();
 
+
+var port = 4040;
+
+
+var address, os = require('os') ,ifaces = os.networkInterfaces();
+
+// Iterate over interfaces ...
+for (var dev in ifaces) {
+
+    // ... and find the one that matches the criteria
+    var iface = ifaces[dev].filter(function(details) {
+        return details.family === 'IPv4' && details.internal === false;
+    });
+
+    if(iface.length > 0) address = iface[0].address;
+}
+
+
 app.get('/', (req,res)=>{
     res.send("API: /temp, /humidity, /soilMoisture");
 });
@@ -17,8 +35,9 @@ app.get('/soilMoisture', (req,res)=>{
     res.send("Soil Moisture: WIP");
 });
 
-app.listen(4040);
-
+let server = app.listen(port, ()=>{
+    console.log(`Server running at http://${address}:${port}/`);
+})
 
 
 /* TODO: Log data at set intervals and add routes to display logged data

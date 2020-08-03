@@ -6,6 +6,7 @@ var LED = new Gpio(4, 'out'); //use GPIO pin 4, and specify that it is output
 
 module.exports.start = function start(){
     var blinkInterval = setInterval(blinkLED, 250); //run the blinkLED function every 250ms
+    setTimeout(endBlink, 5000); //stop blinking after 5 seconds
 }
 
 
@@ -23,4 +24,3 @@ function endBlink() { //function to stop blinking
   //LED.unexport(); // Unexport GPIO to free resources
 }
 
-setTimeout(endBlink, 5000); //stop blinking after 5 seconds s

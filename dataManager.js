@@ -11,5 +11,5 @@ module.exports.start = function(){
 //gets the Temp and humidity from tempHumidity.js and logs the results
 function getTempHumidity(){
     const result = tempHumidity.read();
-    console.log(result.tempurature, result.humidity);
+    console.log(result.temperature, result.humidity);
 }

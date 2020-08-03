@@ -6,6 +6,6 @@ module.exports.start = function(){
 }
 
 function getTempHumidity(){
-    var result = tempHumidity.read();
-    console.log(result)
+    const [temp, humidity] = tempHumidity.read();
+    console.log(temp, humidity);
 }

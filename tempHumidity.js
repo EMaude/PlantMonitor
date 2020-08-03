@@ -8,6 +8,9 @@ module.exports.start = function(){
 
 module.exports.read = function(){
     return sensor.read(11, 17, function(err, temperature, humidity){
-        return [temp, humidity]
+        if(!err)
+        {
+            return [temperature, humidity]
+        }   
     });
 }

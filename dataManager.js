@@ -17,7 +17,7 @@ var readInterval;
 
 //set sensor read interval
 module.exports.start = function () {
-    readInterval = setInterval(getTempHumidity, 1000);
+    readInterval = setInterval(getTempHumidity, 60000); // every 60s 
 }
 
 

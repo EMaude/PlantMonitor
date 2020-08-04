@@ -1,6 +1,6 @@
 
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('sensordata', OPEN_READWRITE | OPEN_CREATE, (err) => {
+var db = new sqlite3.Database('./database/db.sqlite', OPEN_READWRITE | OPEN_CREATE, (err) => {
     if (!err) {
         console.log("DB Connected");
     }
@@ -26,9 +26,10 @@ function getTempHumidity() {
     const result = tempHumidity.read();
     console.log(result.temperature, result.humidity);
 
-    var stmt = db.prepare("INSERT INTO HTdata VALUES (?)"); //prepare db to accept values
-    db.serialize(function(){
-        stmt.run();
-    });
-    
+    let sql = `INSERT INTO THdata (temperature, humidity, currentdate, currentime) values(${result.temperature}, ${result.humidity}, date('now'), time('now'))`
+    db.run(sql, (result, err) => {
+        if (err) {
+            console.log("DB ERROR: " + err.message);
+        }
+    };
 }

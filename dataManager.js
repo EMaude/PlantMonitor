@@ -1,6 +1,6 @@
 
 var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('./database/db.sqlite', OPEN_READWRITE | OPEN_CREATE, (err) => {
+var db = new sqlite3.Database('./database/db.sqlite', "OPEN_READWRITE | OPEN_CREATE", (err) => {
     if (!err) {
         console.log("DB Connected");
     }

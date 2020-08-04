@@ -31,5 +31,5 @@ function getTempHumidity() {
         if (err) {
             console.log("DB ERROR: " + err.message);
         }
-    };
+    });
 }

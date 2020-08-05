@@ -1,4 +1,6 @@
 
+
+
 var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database('./database/db.sqlite', "OPEN_READWRITE | OPEN_CREATE", (err) => {
     if (!err) {
@@ -27,6 +29,7 @@ function getTempHumidity() {
     console.log(result.temperature, result.humidity);
 
     let sql = `INSERT INTO THdata (temperature, humidity, currentdate, currentime) values(${result.temperature}, ${result.humidity}, date('now'), time('now'))`
+
     db.run(sql, (result, err) => {
         if (err) {
             console.log("DB ERROR: " + err.message);
@@ -34,17 +37,18 @@ function getTempHumidity() {
     });
 }
 
-module.exports.getAllTHdata = function() {
-    var allRows;
+module.exports.getAllTHdata = new Promise(function (resolve, reject) {
+    var allData = [];
     db.all(`SELECT * FROM THdata`, (err, rows) => {
         if (!err) {
-            allRows = rows;
+            rows.forEach((row) => {
+                allData.push(row);
+            });
+            resolve(allData);
         }
-        else {
-            console.log("DB ERROR: " + err.message);
+        else
+        {
+            reject();
         }
-
     });
-
-    return allRows;
-}
+});

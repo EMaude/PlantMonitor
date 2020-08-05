@@ -36,7 +36,7 @@ function getTempHumidity() {
 
 module.exports.getAllTHdata = function() {
     var allRows;
-    db.all(``, (err, rows) => {
+    db.all(`SELECT * FROM THdata`, (err, rows) => {
         if (!err) {
             allRows = rows;
         }

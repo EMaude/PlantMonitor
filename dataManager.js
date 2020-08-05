@@ -33,3 +33,18 @@ function getTempHumidity() {
         }
     });
 }
+
+module.exports.getAllTHdata = function() {
+    var allRows;
+    db.all(``, (err, rows) => {
+        if (!err) {
+            allRows = rows;
+        }
+        else {
+            console.log("DB ERROR: " + err.message);
+        }
+
+    });
+
+    return allRows;
+}

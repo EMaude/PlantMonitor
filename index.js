@@ -20,20 +20,13 @@ for (var dev in ifaces) {
 
 
 app.get('/', (req, res) => {
-    res.send("API: /temp, /humidity, /soilMoisture"); v
+    res.send("WIP"); v
 });
 
-app.get('/temp', (req, res) => {
-    res.send("Temp: WIP");
+app.get('/allTH', (req, res) =>{
+    res.send(dataManager.getAllTHdata);
 });
 
-app.get('/humidity', (req, res) => {
-    res.send("Humidity: WIP");
-});
-
-app.get('/soilMoisture', (req, res) => {
-    res.send("Soil Moisture: WIP");
-});
 
 let server = app.listen(port, () => {
     //run init LED

@@ -24,7 +24,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/allTH', (req, res) =>{
-    res.send(dataManager.getAllTHdata());
+
+    console.log(dataManager.getAllTHdata());
+
+   // res.send(dataManager.getAllTHdata());
 });
 
 

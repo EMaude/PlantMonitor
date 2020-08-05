@@ -20,11 +20,11 @@ for (var dev in ifaces) {
 
 
 app.get('/', (req, res) => {
-    res.send("WIP"); v
+    res.send("WIP");
 });
 
 app.get('/allTH', (req, res) =>{
-    res.send(dataManager.getAllTHdata);
+    res.send(dataManager.getAllTHdata());
 });
 
 
